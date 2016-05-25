@@ -1,0 +1,35 @@
+<div class="row marginTopL">
+	<div class="col-md-6 col-md-offset-3">
+		<h3 class="center">Welcome to Heathcliff</h3>
+		<h5 class="center marginTopXS">Please follow the prompt if you're interested in writing with us!</h5>
+	</div>
+
+	<div class="col-md-6 col-md-offset-3 marginTop">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			<h3 class="center"><strong>#Fintech</strong></h3>
+			</div>
+			<div class="panel-body">
+				<h4 class="center"><span class="label label-primary">500 Words</span></h4>
+				<hr>
+				<h6><strong>DESCRIPTION:</strong></h6>
+				<p>Looking for a basic article to educate our blog following on fintech ("Financial Technology").</p>
+				<hr>
+				<h6><strong>KEYWORDS:</strong></h6>
+				<h4 class="center">
+					<span class="label label-primary">Lending Software</span>
+					<span class="label label-primary">Peer-to-Peer</span>
+					<span class="label label-primary">Interest Rates</span>
+					<span class="label label-primary">Sub-prime</span>
+					<span class="label label-primary">CFPB</span>
+				</h4>
+				<hr>
+				<h6><strong>TARGET AUDIENCE:</strong></h6>
+					<p><%= link_to "Generation X", "https://en.wikipedia.org/wiki/Generation_X", target: "_blank" %></p>
+			</div>
+			<div class="panel-footer">
+				<%= mail_to "bradleycarl26@gmail.com", "SEND US YOUR ARTICLE", cc: "cmcollin41@gmail.com", subject: "Heathcliff Article", body: "Describe yourself in 140 characters :). Oh, and don't forget to attach your article!", class: "btn btn-primary btn-block" %>
+			</div>
+		</div>
+	</div>
+</div>

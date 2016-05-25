@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+
+
+$navbar-default-bg: #03a9f4;
+$navbar-default-border: none;
+$navbar-default-color: #fff;
+$navbar-default-link-color: #fff;
+$navbar-border-radius: none;
+
+$brand-primary: #03a9f4;
+$primaryColor: #03a9f4;
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+*{
+	font-family: "Roboto Slab", sans-serif;
+	font-weight: 400;
+}
+.center{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.logo{
+	font-family: "Roboto Slab", sans-serif;
+	font-weight: 700;
+}
+
+.marginTopXL{
+	margin-top: 100px;
+}
+
+.marginTopL{
+	margin-top: 75px;
+}
+
+.marginTop{
+	margin-top: 50px;
+}
+
+.marginTopS{
+	margin-top: 25px;
+}
+
+.marginTopXS{
+	margin-top: 10px;
+}
