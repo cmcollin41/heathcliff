@@ -11,7 +11,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass', '~> 3.3.6'
-
+gem 'devise'
+gem 'simple_form'
+gem 'nested_form_fields'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -23,6 +26,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'letter_opener'
 end
 
 group :production do

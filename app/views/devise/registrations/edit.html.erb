@@ -1,0 +1,33 @@
+<div class="row marginTopS">
+  <div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="center">Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
+    <div class="panel-body">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+          <%= f.input :first_name, wrapper_html: { class: 'col-md-6' } %>
+          <%= f.input :last_name, wrapper_html: { class: 'col-md-6' } %>
+          <%= f.input :email, wrapper_html: { class: 'col-md-12' } %>
+          <% if current_member.writer? %>
+            <%= f.input :specialty, wrapper_html: {class: 'col-md-12'} %>
+          <% else %>
+            <%= f.input :business_name, wrapper_html: {class: 'col-md-12'} %>
+          <% end %>
+          <%= f.input :password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+          <%= f.input :password_confirmation, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+          <%= f.input :current_password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+         
+          <div class="form-group col-md-12">
+            <%= f.submit "Edit Account", class: "btn btn-primary" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+
+

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+
+  resources :prompts
+  resources :assignments, only: [:create, :destroy]
+  devise_for :members
+  root to: 'pages#index'
   get 'pages/about_us' => "pages#about_us"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -14,9 +14,31 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ABOUT US", pages_about_us_path %></li>
-<!--         <li><%#= link_to "SIGN UP", pages_about_us_path %></li>
-        <li><%#= link_to "SIGN IN", pages_about_us_path %></li> -->
+        <% if member_signed_in? %>
+          <% if current_member.writer? || current_member.editor? %>
+            <li><%= link_to "Assigned Prompts", prompts_path %></li>
+          <% elsif current_member.business? %>
+            <li><%= link_to "New Prompt", new_prompt_path %></li>
+          <% else %>
+            <li><%= link_to "All Prompts", prompts_path %></li>
+          <% end %>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_member.first_name %>
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% if current_member.business? %>
+              <li><%= link_to "Your Prompts", prompts_path %></li>
+            <% end %>
+            <li><%= link_to "Edit Account", edit_member_registration_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Sign Out", destroy_member_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% else %>
+          <li><%= link_to "About", pages_about_us_path %></li>
+          <li><%= link_to "Sign In", new_member_session_path %></li>
+          <li><%= link_to "Sign Up", new_member_registration_path %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
