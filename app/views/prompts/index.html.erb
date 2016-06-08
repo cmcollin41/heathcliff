@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row marginTopS">
 		<% @prompts.each do |p| %>
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="height: 100px;">
 					<div class="pull-left">
@@ -68,21 +68,23 @@
 						</div>
 						<% end %>
 					<div class="pull-right">
-						<div class="dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    <%= p.status.capitalize %>
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><%= link_to "Open", prompt_path(p, prompt: {status: :open}), method: :put %></li>
-								<li><%= link_to "Accepted", prompt_path(p, prompt: {status: :accepted}), method: :put %></li>
-								<li><%= link_to "Submitted", prompt_path(p, prompt: {status: :submitted}), method: :put %></li>
-								<li><%= link_to "Under Review", prompt_path(p, prompt: {status: :review}), method: :put %></li>
-								<li><%= link_to "Complete", prompt_path(p, prompt: {status: :complete}), method: :put %></li>
-								<li><%= link_to "Cancel", prompt_path(p, prompt: {status: :cancel}), method: :put %></li>
-						  </ul>
-						</div>
-					
+						<p><%= p.status.capitalize %></p>
+						<% if !current_member.business? %>
+							<div class="dropdown">
+							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    <%= p.status.capitalize %>
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+									<li><%= link_to "Open", prompt_path(p, prompt: {status: :open}), method: :put %></li>
+									<li><%= link_to "Accepted", prompt_path(p, prompt: {status: :accepted}), method: :put %></li>
+									<li><%= link_to "Submitted", prompt_path(p, prompt: {status: :submitted}), method: :put %></li>
+									<li><%= link_to "Under Review", prompt_path(p, prompt: {status: :review}), method: :put %></li>
+									<li><%= link_to "Complete", prompt_path(p, prompt: {status: :complete}), method: :put %></li>
+									<li><%= link_to "Cancel", prompt_path(p, prompt: {status: :cancel}), method: :put %></li>
+							  </ul>
+							</div>
+						<% end %>
 					</div>
 				</div>
 			</div>

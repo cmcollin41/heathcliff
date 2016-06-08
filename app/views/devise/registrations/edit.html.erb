@@ -1,33 +1,110 @@
-<div class="row marginTopS">
-  <div class="col-md-6 col-md-offset-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h2 class="center">Edit <%= resource_name.to_s.humanize %></h2>
-    </div>
-    <div class="panel-body">
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= devise_error_messages! %>
-          <%= f.input :first_name, wrapper_html: { class: 'col-md-6' } %>
-          <%= f.input :last_name, wrapper_html: { class: 'col-md-6' } %>
-          <%= f.input :email, wrapper_html: { class: 'col-md-12' } %>
-          <% if current_member.writer? %>
-            <%= f.input :specialty, wrapper_html: {class: 'col-md-12'} %>
+<div class="container marginTopS">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <% if current_member.business? %>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Business Info</h3>
+              </div>
+            </div>
           <% else %>
-            <%= f.input :business_name, wrapper_html: {class: 'col-md-12'} %>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Personal Info</h3>
+              </div>
+            </div>
           <% end %>
-          <%= f.input :password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
-          <%= f.input :password_confirmation, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
-          <%= f.input :current_password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
-         
-          <div class="form-group col-md-12">
-            <%= f.submit "Edit Account", class: "btn btn-primary" %>
-          </div>
-      <% end %>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+              <%= f.input :first_name, wrapper_html: { class: 'col-md-6' } %>
+              <%= f.input :last_name, wrapper_html: { class: 'col-md-6' } %>
+              <%= f.input :email, wrapper_html: { class: 'col-md-12' } %>
+              <% if current_member.writer? %>
+                <%= f.input :specialty, wrapper_html: {class: 'col-md-12'} %>
+              <% else %>
+                <%= f.input :business_name, wrapper_html: {class: 'col-md-12'} %>
+              <% end %>
+              <%= f.input :password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+              <%= f.input :password_confirmation, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+              <%= f.input :current_password, wrapper_html: { class: 'col-md-12' }, autocomplete: "off" %>
+             
+              <div class="form-group col-md-12">
+                <%= f.submit "Edit Account", class: "btn btn-primary" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <% if current_member.business? %>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-body">
+         <% if current_member.card_last4? %>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Update Your Card</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 well">
+                Your current card on file is:
+                <hr />
+                <div><%= current_member.card_type %> **** **** **** <%= current_member.card_last4 %></div>
+                <div>Expires: <%= current_member.card_exp_month %> / <%= current_member.card_exp_year %></div>
+              </div>
+            </div>
+            <hr />
+
+          <% else %>
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Add a Card</h3>
+              </div>
+            </div>
+          <% end %>
+
+          <%= form_tag card_path, method: :put, id: "payment-form" do %>
+            <span class="payment-errors"></span>
+
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label>Card Number</label>
+                <input value="4242 4242 4242 4242" type="text" size="20" data-stripe="number" class="form-control" />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label>CVC</label>
+                <input value="123" type="text" size="4" data-stripe="cvc" class="form-control"/>
+              </div>
+              <div class="col-md-2">
+                <label>Month</label>
+                <input value="12" type="text"  data-stripe="exp-month" class="form-control"/>
+              </div>
+              <div class="col-md-1">
+                <label></label>
+                <p><strong>/</strong></p>
+              </div>
+              <div class="col-md-3">
+                <label>Year</label>
+                <input value="2020" type="text"  data-stripe="exp-year" class="form-control"/>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <button class="btn btn-primary" type="submit">Add Card</button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
   </div>
 </div>
-
-
-
 

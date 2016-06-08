@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   resources :prompts
   resources :assignments, only: [:create, :destroy]
-  devise_for :members
+  devise_for :members, :controllers => {:registrations => "registrations"}
+  resource :card
+  
   root to: 'pages#index'
   get 'pages/about_us' => "pages#about_us"
 

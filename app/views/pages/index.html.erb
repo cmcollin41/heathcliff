@@ -1,33 +1,68 @@
-<div class="row marginTopS">
-	<div class="col-md-5 col-md-offset-1">
-		<h3 class="center">Welcome to Heathcliff</h3>
-		<h5 class="center marginTopXS">Content Made Simple :)</h5>
+<div class="row">
+	<div class="col-md-12 intro">
+		<h1 class="center marginTopXL">Content Made<span class="element"></span></h1><div class="typed-cursor"></div>
+		<div class="row center">
+			<div class="col-md-4">
+				<h4>Create a writing prompt.</h4>
+			</div>
+			<div class="col-md-4">
+				<h4>We will complete it.</h4>
+			</div>
+			<div class="col-md-4">
+				<h4>Your marketing will grow.</h4>
+			</div>
+		</div>
+		<div class="center marginTopS">
+			<%= link_to "Create an account for you business", new_member_registration_path, class: "btn btn-primary" %>
+		</div>
 	</div>
-	<div class="col-md-5">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-			<h3 class="center"><strong>#Fintech</strong></h3>
+	<div class="container">
+		<div class="col-md-5 col-md-offset-1 marginTopL marginBotL">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h3 class="center"><strong>#Fintech</strong></h3>
+				</div>
+				<div class="panel-body">
+					<h4 class="center"><span class="label label-primary">300 Words</span></h4>
+					<hr>
+					<h6><strong>DESCRIPTION:</strong></h6>
+					<p>Looking for a basic article to educate our blog following on fintech ("Financial Technology").</p>
+					<hr>
+					<h6><strong>KEYWORDS:</strong></h6>
+					<h4 class="center">
+						<span class="label label-primary">Lending Platforms</span>
+						<span class="label label-primary">Peer-to-Peer</span>
+						<span class="label label-primary">Interest Rates</span>
+					</h4>
+					<hr>
+					<h6><strong>TARGET AUDIENCE:</strong></h6>
+						<p><%= link_to "Generation X", "https://en.wikipedia.org/wiki/Generation_X", target: "_blank" %></p>
+				</div>
+				<div class="panel-footer">
+					<button class="btn btn-primary btn-block">Create Your Prompt</button>
+				</div>
 			</div>
-			<div class="panel-body">
-				<h4 class="center"><span class="label label-primary">300 Words</span></h4>
-				<hr>
-				<h6><strong>DESCRIPTION:</strong></h6>
-				<p>Looking for a basic article to educate our blog following on fintech ("Financial Technology").</p>
-				<hr>
-				<h6><strong>KEYWORDS:</strong></h6>
-				<h4 class="center">
-					<span class="label label-primary">Lending Platforms</span>
-					<span class="label label-primary">Peer-to-Peer</span>
-					<span class="label label-primary">Interest Rates</span>
-				</h4>
-				<hr>
-				<h6><strong>TARGET AUDIENCE:</strong></h6>
-					<p><%= link_to "Generation X", "https://en.wikipedia.org/wiki/Generation_X", target: "_blank" %></p>
-			</div>
-			<div class="panel-footer">
-				<%= mail_to "bradleycarl26@gmail.com", "SEND US YOUR ARTICLE", cc: "cmcollin41@gmail.com", subject: "Heathcliff Article", body: "Describe yourself in 140 characters :). How much do you generally charge per 300 words? Oh, and don't forget to attach your article!", class: "btn btn-primary btn-block" %>
+		</div>
+		<div class="col-md-5 marginTopL marginBotpL">
+			<h4 class="center">Take 5 minutes and create a prompt</h4>
+
+			<h5 class="center">Blog Post | Social Post | Website Content</h5>
+		</div>
+	</div>
+
+	<div class="quote">
+		<div class="container">
+			<div class="col-md-12 center marginTopL marginBotL">
+				<h3>"Cheaper than an agency and easier than a freelancer"</h3>
 			</div>
 		</div>
 	</div>
+
+	<div class="container center">
+		<div class="col-md-12 marginTopL marginBotL">
+			<div style="font-size: 5em;">$70</div>
+			<div style="font-size: 1em;">PER PROMPT</div>
+		</div>
 	</div>
 </div>
+

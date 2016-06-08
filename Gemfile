@@ -14,7 +14,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'simple_form'
 gem 'nested_form_fields'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', '~> 1.29.1'
+gem 'jquery-turbolinks'
+gem 'typedjs-rails', '~> 1.0.3'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 

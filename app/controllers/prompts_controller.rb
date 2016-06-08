@@ -21,19 +21,23 @@ class PromptsController < ApplicationController
 
   def create
 
-    customer = if member.stripe_id?
-                 Stripe::Customer.retrieve(current_member.stripe_id)
-               else
-                 Stripe::Customer.create(email: current_member.email)
-               end
-
-
-
-
+    @member = Member.find_by(id: current_member.id)
 
   	@prompt = current_member.prompts.build(prompt_params)
   	if @prompt.save
-  		redirect_to prompts_path, notice: "Prompt was successfully posted"
+
+      customer = Stripe::Customer.retrieve(current_member.stripe_id)
+
+      Stripe::Charge.create(
+        amount: 7500,
+        currency: "usd",
+        customer: customer.id,
+        description: "Charge for prompt id #{@prompt.id}"
+      )
+
+      ReceiptMailer.receipt_email(@member, @prompt).deliver
+
+  		redirect_to prompts_path, notice: "Prompt was successfully posted and you have been charged $75"
   	else
   		render :new
   	end

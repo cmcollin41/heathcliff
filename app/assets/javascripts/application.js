@@ -11,8 +11,28 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require typed
 //= require bootstrap-sprockets
 //= require nested_form_fields
 //= require turbolinks
 //= require_tree .
+
+
+$(function(){
+    $(".element").typed({
+      strings: [" Simple.", " Easy.", " Right."],
+      typeSpeed: 250,
+      startDelay: 1,
+      backSpeed: 10,
+      backDelay: 500,
+      showCursor: true,
+      cursorChar: "|",
+      loop: true
+    });
+});
+
+
+
+
