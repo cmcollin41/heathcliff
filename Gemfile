@@ -17,6 +17,7 @@ gem 'nested_form_fields'
 gem 'stripe', '~> 1.29.1'
 gem 'jquery-turbolinks'
 gem 'typedjs-rails', '~> 1.0.3'
+gem 'figaro'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
