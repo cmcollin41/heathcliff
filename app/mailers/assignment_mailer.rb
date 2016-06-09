@@ -1,5 +1,5 @@
 class AssignmentMailer < ApplicationMailer
-	 default from: "brad@heathcliff.io"
+	 default from: "bradley@heathcliff.io"
 
   def assignment_email(member, prompt)
   	@member = member

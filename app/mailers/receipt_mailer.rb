@@ -1,5 +1,5 @@
 class ReceiptMailer < ApplicationMailer
-	default from: "brad@heathcliff.io"
+	default from: "bradley@heathcliff.io"
 
 	def receipt_email(member, prompt)
   	@member = member
