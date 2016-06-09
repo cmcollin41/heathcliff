@@ -13,6 +13,4 @@ class Member < ActiveRecord::Base
 	validates_presence_of :last_name
 	validates_presence_of :email
 	validates_presence_of :member_type
-	validates_presence_of :password
-	validates_presence_of :password_confirmation
 end
