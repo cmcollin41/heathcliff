@@ -1,52 +1,68 @@
 <div class="row">
 	<div class="col-md-12 intro">
-		<h1 class="center marginTopXL">Content Made<span class="element"></span></h1><div class="typed-cursor"></div>
-		<div class="row center">
+		<h1 class="center paddingTop">Content Made<span class="element"></span></h1><div class="typed-cursor"></div>
+		<div class="row flex-row marginTopS">
 			<div class="col-md-4">
-				<h4>Create a writing prompt.</h4>
+				<div class="item-intro">
+					<%= image_tag('prompt.svg', width: 250) %>
+				</div>
+				<h4 class="center">Create a writing prompt.</h4>
 			</div>
 			<div class="col-md-4">
-				<h4>We will complete it.</h4>
+				<div class="item-intro">
+					<%= image_tag('writers.svg', width: 250) %>
+				</div>	
+				<h4 class="center">We will complete it.</h4>
 			</div>
 			<div class="col-md-4">
-				<h4>Your marketing will grow.</h4>
+				<div class="item-intro">
+					<%= image_tag('grow.svg', width: 250) %>
+				</div>
+				<h4 class="center">Your marketing will grow.</h4>
 			</div>
 		</div>
 		<div class="center marginTopS">
 			<%= link_to "Create an account for you business", new_member_registration_path, class: "btn btn-primary" %>
 		</div>
+		<div class="center marginTopXS marginBotL">
+			<%= link_to "I'm a writer", new_member_registration_path %>
+		</div>
 	</div>
-	<div class="container">
+	<div class="container flex-row">
 		<div class="col-md-5 col-md-offset-1 marginTopL marginBotL">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-				<h3 class="center"><strong>#Fintech</strong></h3>
-				</div>
-				<div class="panel-body">
-					<h4 class="center"><span class="label label-primary">300 Words</span></h4>
-					<hr>
-					<h6><strong>DESCRIPTION:</strong></h6>
-					<p>Looking for a basic article to educate our blog following on fintech ("Financial Technology").</p>
-					<hr>
-					<h6><strong>KEYWORDS:</strong></h6>
-					<h4 class="center">
-						<span class="label label-primary">Lending Platforms</span>
-						<span class="label label-primary">Peer-to-Peer</span>
-						<span class="label label-primary">Interest Rates</span>
-					</h4>
-					<hr>
-					<h6><strong>TARGET AUDIENCE:</strong></h6>
-						<p><%= link_to "Generation X", "https://en.wikipedia.org/wiki/Generation_X", target: "_blank" %></p>
-				</div>
-				<div class="panel-footer">
-					<button class="btn btn-primary btn-block">Create Your Prompt</button>
+			<div class="item">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+					<h3 class="center"><strong>#Fintech</strong></h3>
+					</div>
+					<div class="panel-body">
+						<h4 class="center"><span class="label label-primary">300 Words</span></h4>
+						<hr>
+						<h6><strong>DESCRIPTION:</strong></h6>
+						<p>Looking for a basic article to educate our blog following on fintech ("Financial Technology").</p>
+						<hr>
+						<h6><strong>KEYWORDS:</strong></h6>
+						<h4 class="center">
+							<span class="label label-primary">Lending Platforms</span>
+							<span class="label label-primary">Peer-to-Peer</span>
+							<span class="label label-primary">Interest Rates</span>
+						</h4>
+						<hr>
+						<h6><strong>TARGET AUDIENCE:</strong></h6>
+							<p><%= link_to "Generation X", "https://en.wikipedia.org/wiki/Generation_X", target: "_blank" %></p>
+					</div>
+					<div class="panel-footer">
+						<%= link_to "Create Your Prompt", new_prompt_path, class: "btn btn-primary btn-block" %>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-5 marginTopL marginBotpL">
-			<h4 class="center">Take 5 minutes and create a prompt</h4>
-
-			<h5 class="center">Blog Post | Social Post | Website Content</h5>
+		<div class="col-md-5 marginBotXL">
+			<div class="item">
+				<h4>Take 5 minutes and create a prompt</h4>
+				<%= image_tag('prompt.svg', width: 300, class: "marginTopS marginBotS") %>
+				<h5>Blog Post | Social Post | Website Content</h5>
+			</div>
 		</div>
 	</div>
 
@@ -58,10 +74,31 @@
 		</div>
 	</div>
 
-	<div class="container center">
-		<div class="col-md-12 marginTopL marginBotL">
-			<div style="font-size: 5em;">$70</div>
-			<div style="font-size: 1em;">PER PROMPT</div>
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3 marginTopL marginBotL">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h3 class="center"><strong>Pricing</strong></h3>
+				</div>
+				<div class="panel-body">
+					<h1 class="center"><span class="label label-primary">$70</span></h1>
+					<hr>
+					<h6><strong>DESCRIPTION:</strong></h6>
+					<p>Submit a writing prompt for $70. A prompt can be for any cotent you need written i.e. a blog post, a social media post, or web content.</p>
+					<hr>
+					<h6><strong>BENEFITS:</strong></h6>
+					<h4 class="center">
+						<span class="label label-primary">Up to 1200 words</span>
+						<span class="label label-primary">5-day turnaround</span>
+						<span class="label label-primary">SEO optimized</span>
+						<span class="label label-primary">Professional writers</span>
+						<span class="label label-primary">In-house editors</span>
+					</h4>
+				</div>
+				<div class="panel-footer">
+					<%= link_to "Get Started!", new_member_registration_path, class: "btn btn-primary btn-block" %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

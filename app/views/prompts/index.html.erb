@@ -2,7 +2,7 @@
 	<div class="row marginTopS">
 		<% @prompts.each do |p| %>
 		<div class="col-md-6">
-			<div class="panel panel-default">
+			<div class="panel panel-default marginTopL marginBotL">
 				<div class="panel-heading" style="height: 100px;">
 					<div class="pull-left">
 						<h3><strong><%= p.category %>  <small>#<%= p.id %></small></strong></h3>
@@ -68,8 +68,9 @@
 						</div>
 						<% end %>
 					<div class="pull-right">
-						<p><%= p.status.capitalize %></p>
-						<% if !current_member.business? %>
+						<%= if current_member.business? %>
+							<p><%= p.status.capitalize %></p>
+						<% else %>
 							<div class="dropdown">
 							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							    <%= p.status.capitalize %>

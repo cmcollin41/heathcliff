@@ -62,6 +62,32 @@ html, body{
 	margin-bottom: 0px;
 }
 
+.sub-bar{
+	 display: -webkit-flex;
+   display: flex;
+    -webkit-justify-content: flex-end;
+   justify-content: flex-end;
+   .item{
+   	padding: 5px 15px;
+   	font-size: 1.3rem;
+   }
+}
+
+.footer{
+	 display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+    -webkit-justify-content: center;
+   justify-content: center;
+   .item{
+   	padding: 50px 15px;
+   	font-size: 1.3rem;
+   }
+}
+
 .btn{
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
@@ -72,6 +98,7 @@ p{
 
 .label{
 	border-radius: 1px;
+	display: inline-block;
 }
 .center{
 	text-align: center;
@@ -89,6 +116,13 @@ p{
 	}
 }
 
+.paddingTopXL{
+	padding-top: 100px;
+	@media screen and (max-width: 800px){
+		padding-top: 50px;
+	}
+}
+
 .marginBotXL{
 	margin-bottom: 100px;
 	@media screen and (max-width: 800px){
@@ -103,6 +137,13 @@ p{
 	}
 }
 
+.paddingTopL{
+	padding-top: 75px;
+		@media screen and (max-width: 800px){
+		padding-top: 50px;
+	}
+}
+
 .marginBotL{
 	margin-bottom: 75px;
 		@media screen and (max-width: 800px){
@@ -114,8 +155,16 @@ p{
 	margin-top: 50px;
 }
 
+.paddingTop{
+	padding-top: 50px;
+}
+
 .marginTopS{
 	margin-top: 25px;
+}
+
+.marginBotS{
+	margin-bottom: 25px;
 }
 
 .marginTopXS{
@@ -128,7 +177,7 @@ p{
 
 .intro{
 	background-color: #fafafa;
-	height: 100vh;
+	height: 100%;
 	min-height: 100vh;
 }
 
@@ -141,4 +190,40 @@ p{
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
+}
+
+
+.flex-row{
+   display: -webkit-flex;
+   display: flex;
+   flex-flow: row wrap;
+   -webkit-flex-flow: row wrap;
+  	-webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   align-items: center;
+   justify-content: center;
+   .item{
+   	  display: -webkit-flex;
+   		display: flex;
+   		-webkit-flex-direction: column;
+   		flex-direction: column;
+  		-webkit-align-items: center;
+   		align-items: center;
+   		-webkit-justify-content: center;
+   		align-items: center;
+   		justify-content: center;
+   }
+    .item-intro{
+   	  display: -webkit-flex;
+   		display: flex;
+   		-webkit-flex-direction: column;
+   		flex-direction: column;
+  		-webkit-align-items: center;
+   		align-items: center;
+   		align-items: center;
+   		-webkit-justify-content: center;
+   		justify-content: center;
+   		padding: 25px;
+   }
 }

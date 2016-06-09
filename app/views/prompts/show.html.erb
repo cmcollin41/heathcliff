@@ -67,6 +67,9 @@
 						</div>
 						<% end %>
 					<div class="pull-right">
+						<%= if current_member.business? %>
+							<p><%= p.status.capitalize %></p>
+						<% else %>
 						<div class="dropdown">
 						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 						    <%= @prompt.status.capitalize %>
