@@ -1,99 +1,95 @@
-<div class="row marginTopS">
-<div class="container full-page">
+<div class="row">
+	<div class="container marginTopL marginBotL full-page">
 		<% @prompts.each do |p| %>
-		<div class="col-md-6">
-			<div class="panel panel-default marginTopL marginBotL">
-				<div class="panel-heading" style="height: 100px;">
-					<div class="pull-left">
-						<h3><strong><%= p.category %>  <small>#<%= p.id %></small></strong></h3>
+			<div class="col-md-6">
+				<div class="panel panel-default marginTopXS marginBotXS">
+					<div class="panel-heading" style="height: 100px;">
+						<div class="pull-left">
+							<h3><strong><%= p.category %>  <small>#<%= p.id %></small></strong></h3>
+						</div>
+						<div class="pull-right">
+							<h3><small><%= p.due_date %></small></h3>
+						</div>
 					</div>
-					<div class="pull-right">
-						<h3><small><%= p.due_date %></small></h3>
-					</div>
-				</div>
-				<div class="panel-body">
-					<h4 class="center"><span class="label label-primary"><%= p.length %> Words</span></h4>
-					<hr>
-					<h6><strong>DESCRIPTION:</strong></h6>
-					<p><%= p.description %></p>
-					<hr>
-					<h6><strong>KEYWORDS:</strong></h6>
-					<h4 class="center">
-						<% p.keywords.each do |k| %>
-							<span class="label label-primary"><%= k.word.capitalize %></span>
-						<% end %>
-					</h4>
-					<hr>
-					<h6><strong>TARGET AUDIENCE:</strong></h6>
-						<p><%= p.target_audience %></p>
-				</div>
-				<div class="panel-footer" style="height: 60px;">
-					<div class="pull-left">
-						<% if p.members.include?(current_member)%>
-	  					<%= link_to "DECLINE", assignment_path(id: p.id), method: :delete, class: "btn btn-danger" %>
-	  				<% end %>
-						<% if p.members.present? || current_member.admin? %>
-							<% p.members.each do |pm| %>
-								<%= link_to "#{pm.first_name}", "#", class: "btn btn-primary" %>
+					<div class="panel-body">
+						<h4 class="center"><span class="label label-primary"><%= p.length %> Words</span></h4>
+						<hr>
+						<h6><strong>DESCRIPTION:</strong></h6>
+						<p><%= p.description %></p>
+						<hr>
+						<h6><strong>KEYWORDS:</strong></h6>
+						<h4 class="center">
+							<% p.keywords.each do |k| %>
+								<span class="label label-primary"><%= k.word.capitalize %></span>
 							<% end %>
-						<% end %>
+						</h4>
+						<hr>
+						<h6><strong>TARGET AUDIENCE:</strong></h6>
+							<p><%= p.target_audience %></p>
 					</div>
-						<% if p.open? && current_member.admin? || p.members.blank? && current_member.admin? %>
-						<div class="pull-left" style="margin-left: 5px;">
-							<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    Assign to author:
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<% @writers.each do |m| %>
-								  	<li><%= link_to "#{m.first_name}", assignments_path(member_id: m.id, prompt_id: p.id), method: :post %></li>
-								  <% end %>
-							  </ul>
-							</div>
+					<div class="panel-footer" style="height: 60px;">
+						<div class="pull-left">
+							<% if p.members.include?(current_member)%>
+		  					<%= link_to "DECLINE", assignment_path(id: p.id), method: :delete, class: "btn btn-danger" %>
+		  				<% end %>
+							<% if p.members.present? || current_member.admin? %>
+								<% p.members.each do |pm| %>
+									<%= link_to "#{pm.first_name}", "#", class: "btn btn-primary" %>
+								<% end %>
+							<% end %>
 						</div>
-						<% elsif p.submitted? && current_member.admin? %>
-						<div class="pull-left" style="margin-left: 5px;">
-							<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    Assign to Editor:
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<% @editors.each do |m| %>
-								  	<li><%= link_to "#{m.first_name}", assignments_path(member_id: m.id, prompt_id: p.id), method: :post %></li>
-								  <% end %>
-							  </ul>
+							<% if p.open? && current_member.admin? || p.members.blank? && current_member.admin? %>
+							<div class="pull-left" style="margin-left: 5px;">
+								<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    Assign to author:
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<% @writers.each do |m| %>
+									  	<li><%= link_to "#{m.first_name}", assignments_path(member_id: m.id, prompt_id: p.id), method: :post %></li>
+									  <% end %>
+								  </ul>
+								</div>
 							</div>
+							<% elsif p.submitted? && current_member.admin? %>
+							<div class="pull-left" style="margin-left: 5px;">
+								<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    Assign to Editor:
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<% @editors.each do |m| %>
+									  	<li><%= link_to "#{m.first_name}", assignments_path(member_id: m.id, prompt_id: p.id), method: :post %></li>
+									  <% end %>
+								  </ul>
+								</div>
+							</div>
+							<% end %>
+						<div class="pull-right">
+							<% if current_member.business? %>
+								<p><%= p.status.capitalize %></p>
+							<% else %>
+								<div class="dropdown">
+								  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    <%= p.status.capitalize %>
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+										<li><%= link_to "Open", prompt_path(p, prompt: {status: :open}), method: :put %></li>
+										<li><%= link_to "Accepted", prompt_path(p, prompt: {status: :accepted}), method: :put %></li>
+										<li><%= link_to "Submitted", prompt_path(p, prompt: {status: :submitted}), method: :put %></li>
+										<li><%= link_to "Under Review", prompt_path(p, prompt: {status: :review}), method: :put %></li>
+										<li><%= link_to "Complete", prompt_path(p, prompt: {status: :complete}), method: :put %></li>
+										<li><%= link_to "Cancel", prompt_path(p, prompt: {status: :cancel}), method: :put %></li>
+								  </ul>
+								</div>
+							<% end %>
 						</div>
-						<% end %>
-					<div class="pull-right">
-						<%= if current_member.business? %>
-							<p><%= p.status.capitalize %></p>
-						<% else %>
-							<div class="dropdown">
-							  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    <%= p.status.capitalize %>
-							    <span class="caret"></span>
-							  </button>
-							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-									<li><%= link_to "Open", prompt_path(p, prompt: {status: :open}), method: :put %></li>
-									<li><%= link_to "Accepted", prompt_path(p, prompt: {status: :accepted}), method: :put %></li>
-									<li><%= link_to "Submitted", prompt_path(p, prompt: {status: :submitted}), method: :put %></li>
-									<li><%= link_to "Under Review", prompt_path(p, prompt: {status: :review}), method: :put %></li>
-									<li><%= link_to "Complete", prompt_path(p, prompt: {status: :complete}), method: :put %></li>
-									<li><%= link_to "Cancel", prompt_path(p, prompt: {status: :cancel}), method: :put %></li>
-							  </ul>
-							</div>
-						<% end %>
 					</div>
 				</div>
 			</div>
-		</div>
-
 		<% end %>
-
-	</div>
-
 	</div>
 </div>
