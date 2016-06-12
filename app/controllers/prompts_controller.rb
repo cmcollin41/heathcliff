@@ -11,8 +11,8 @@ class PromptsController < ApplicationController
       @prompts = current_member.prompts
     end
 
-    @writers = Member.where(member_type: 0)
-    @editors = Member.where(member_type: 2)
+    @writers = Member.where(member_type: [0,3])
+    @editors = Member.where(member_type: [2,3])
   end
 
   def new
@@ -29,7 +29,7 @@ class PromptsController < ApplicationController
       customer = Stripe::Customer.retrieve(current_member.stripe_id)
 
       Stripe::Charge.create(
-        amount: 7500,
+        amount: 7000,
         currency: "usd",
         customer: customer.id,
         description: "Charge for prompt id #{@prompt.id}"
@@ -37,7 +37,7 @@ class PromptsController < ApplicationController
 
       ReceiptMailer.receipt_email(@member, @prompt).deliver
 
-  		redirect_to prompts_path, notice: "Prompt was successfully posted and you have been charged $75"
+  		redirect_to prompts_path, notice: "Prompt was successfully posted and you have been charged $70"
   	else
   		render :new
   	end
@@ -54,8 +54,21 @@ class PromptsController < ApplicationController
 
   def update
     @prompt = Prompt.find(params[:id])
+    @prompt.update(prompt_params)
   	if @prompt.update(prompt_params)
-  		redirect_to :back, notice: "Prompt was successfully udpated."
+  		redirect_to prompts_path, notice: "Prompt was successfully udpated."
+    else
+      redirect_to :back
+    end
+  end
+
+  def update_status
+    @prompt = Prompt.find(params[:id])
+    @prompt.status = params[:prompt][:status]
+    if @prompt.save(validate: false)
+      redirect_to prompts_path, notice: "Prompt was successfully udpated."
+    else
+      redirect_to prompts_path, notice: "shit... something went wrong."
     end
   end
 

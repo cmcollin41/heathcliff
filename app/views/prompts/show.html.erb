@@ -76,12 +76,12 @@
 						    <span class="caret"></span>
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><%= link_to "Open", prompt_path(@prompt, prompt: {status: :open}), method: :put %></li>
-								<li><%= link_to "Accepted", prompt_path(@prompt, prompt: {status: :accepted}), method: :put %></li>
-								<li><%= link_to "Submitted", prompt_path(@prompt, prompt: {status: :submitted}), method: :put %></li>
-								<li><%= link_to "Under Review", prompt_path(@prompt, prompt: {status: :review}), method: :put %></li>
-								<li><%= link_to "Complete", prompt_path(@prompt, prompt: {status: :complete}), method: :put %></li>
-								<li><%= link_to "Cancel", prompt_path(@prompt, prompt: {status: :cancel}), method: :put %></li>
+								<li><%= link_to "Open", update_status_prompt_path(@prompt, prompt: {status: :open}), method: :put %></li>
+								<li><%= link_to "Accepted", update_status_prompt_path(@prompt, prompt: {status: :accepted}), method: :put %></li>
+								<li><%= link_to "Submitted", update_status_prompt_path(@prompt, prompt: {status: :submitted}), method: :put %></li>
+								<li><%= link_to "Under Review", update_status_prompt_path(@prompt, prompt: {status: :review}), method: :put %></li>
+								<li><%= link_to "Complete", update_status_prompt_path(@prompt, prompt: {status: :complete}), method: :put %></li>
+								<li><%= link_to "Cancel", update_status_prompt_path(@prompt, prompt: {status: :cancel}), method: :put %></li>
 						  </ul>
 						</div>
 					

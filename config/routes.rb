@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :prompts
+  resources :prompts do
+    member do
+      put 'update_status'
+    end
+  end
+  
   resources :assignments, only: [:create, :destroy]
   devise_for :members, :controllers => {:registrations => "registrations"}
   resource :card

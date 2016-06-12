@@ -9,12 +9,11 @@
 
 </head>
 <body>
+<div class="center">
+	<%= flash_messages %>
+</div>
 <%= render partial: "shared/navbar" %>
- 	<div class="container center">	
-	 	<% flash.each do |key, value| %>
-	    <div class="alert alert-<%= key %>"><%= value %></div>
-	  <% end %>
-  </div>
+
 <%= yield %>
 
 <%= render partial: "shared/footer" %>
