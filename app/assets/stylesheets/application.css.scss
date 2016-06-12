@@ -82,12 +82,11 @@ html, body{
 }
 
 
-.box{
-  margin: 5px;
-  width: 300px;
-  //min-width: 300px;
+.no-hover{
+  &:hover{
+    cursor: default;
+  }
 }
-
 
 .footer{
 	 display: -webkit-flex;

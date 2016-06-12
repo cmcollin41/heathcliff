@@ -34,7 +34,7 @@
 		  				<% end %>
 							<% if p.members.present? || current_member.admin? %>
 								<% p.members.each do |pm| %>
-									<%= link_to "#{pm.first_name}", "#", class: "btn btn-primary" %>
+									<p class="btn btn-primary no-hover"><%= pm.first_name %></p>
 								<% end %>
 							<% end %>
 						</div>
