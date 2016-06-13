@@ -5,16 +5,22 @@ Rails.application.routes.draw do
       put 'update_status'
     end
   end
-  
+
   resources :assignments, only: [:create, :destroy]
   devise_for :members, :controllers => {:registrations => "registrations"}
   resource :card
-  
-  root to: 'pages#index'
+
   get '/about_us' => "pages#about_us"
   get '/pricing' => "pages#pricing"
   get '/writers' => "pages#writers"
   get '/faq' => "pages#faq"
+  
+  authenticated :member do
+    root to: 'prompts#index', as: :authenticated_root
+  end
+  
+  root to: 'pages#index'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

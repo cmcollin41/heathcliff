@@ -3,16 +3,27 @@ class PromptsController < ApplicationController
 	before_action :authenticate_member!
 
   def index
+
     if current_member.business?
       @prompts = Prompt.where(business_id: current_member.id)
     elsif current_member.admin?
       @prompts = Prompt.all
+      if params[:status].present?
+         @prompts = Prompt.where(status: params[:status])
+      end
     else
       @prompts = current_member.prompts
     end
 
-    @writers = Member.where(member_type: [0,3])
-    @editors = Member.where(member_type: [2,3])
+
+    # if params[:open].present?
+    #   @prompts = Prompt.where(status: 0)
+    # elsif params[:accepted].present?
+    #   @prompts = Prompt.where(status: 1)
+    # end
+
+      @writers = Member.where(member_type: [0,3])
+      @editors = Member.where(member_type: [2,3])
   end
 
   def new
@@ -68,7 +79,7 @@ class PromptsController < ApplicationController
     if @prompt.save(validate: false)
       redirect_to prompts_path, notice: "Prompt was successfully udpated."
     else
-      redirect_to prompts_path, notice: "shit... something went wrong."
+      redirect_to prompts_path, notice: "shiz... something went wrong."
     end
   end
 
